@@ -23,4 +23,8 @@ HX711 HX711_Tare(hx711_t data, uint8_t times);
 int HX711_Value(hx711_t data);
 int HX711_AverageValue(hx711_t data, uint8_t times);
 
+void init_hx711_port(hx711_t *data, GPIO_TypeDef* portScki, uint16_t pinScki,
+		GPIO_TypeDef* portDatai, uint16_t pinDatai );
+void init_hx711(HX711 *data);
+
 #endif /* HX711_H_ */

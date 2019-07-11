@@ -72,3 +72,17 @@ hx711_t HX711_Tare(hx711_t data, uint8_t times)
     return data;
 }
 
+
+void init_hx711_port(hx711_t *data, GPIO_TypeDef* portScki, uint16_t pinScki,
+		GPIO_TypeDef* portDatai, uint16_t pinDatai )
+{
+	data->gain=1;
+	data->portData=portDatai;
+	data->portSck=portScki;
+	data->offset=0;
+	data->pinData=pinDatai;
+	data->pinSck=pinScki;
+
+	HAL_GPIO_WritePin(data->portSck, data->pinSck, GPIO_PIN_RESET);
+	HAL_Delay(50);
+}
