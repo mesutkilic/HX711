@@ -3,7 +3,7 @@
 
 #include "stm32f3xx_hal.h"
 
-typedef struct _hx711
+struct _hx711_t
 {
 	GPIO_TypeDef* gpioSck;
 	GPIO_TypeDef* gpioData;
@@ -14,12 +14,13 @@ typedef struct _hx711
 	// 1: channel A, gain factor 128
 	// 2: channel B, gain factor 32
     // 3: channel A, gain factor 64
-} HX711;
+};
 
+typedef struct _hx711_t hx711_t;
 
-void HX711_Init(HX711 data);
-HX711 HX711_Tare(HX711 data, uint8_t times);
-int HX711_Value(HX711 data);
-int HX711_AverageValue(HX711 data, uint8_t times);
+void HX711_Init(hx711_t data);
+HX711 HX711_Tare(hx711_t data, uint8_t times);
+int HX711_Value(hx711_t data);
+int HX711_AverageValue(hx711_t data, uint8_t times);
 
 #endif /* HX711_H_ */

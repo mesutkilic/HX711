@@ -1,6 +1,6 @@
 #include "hx711.h"
 
-void HX711_Init(HX711 data)
+void HX711_Init(hx711_t data)
 {
 	GPIO_InitTypeDef GPIO_InitStruct;
 	GPIO_InitStruct.Pin = data.pinSck;
@@ -21,7 +21,7 @@ void HX711_Init(HX711 data)
 
 }
 
-int HX711_Average_Value(HX711 data, uint8_t times)
+int HX711_Average_Value(hx711_t data, uint8_t times)
 {
     int sum = 0;
     for (int i = 0; i < times; i++)
@@ -32,7 +32,7 @@ int HX711_Average_Value(HX711 data, uint8_t times)
     return sum / times;
 }
 
-int HX711_Value(HX711 data)
+int HX711_Value(hx711_t data)
 {
     int buffer;
     buffer = 0;
@@ -65,7 +65,7 @@ int HX711_Value(HX711 data)
     return buffer;
 }
 
-HX711 HX711_Tare(HX711 data, uint8_t times)
+hx711_t HX711_Tare(hx711_t data, uint8_t times)
 {
     int sum = HX711_Average_Value(data, times);
     data.offset = sum;
